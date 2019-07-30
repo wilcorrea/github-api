@@ -11,11 +11,10 @@ describe('Test Github Search', function () {
     expect(wrapper.contains('button')).toBe(true)
   })
 
-  const user = 'wilcorrea'
-
   // https://vue-test-utils.vuejs.org/api/wrapper/trigger.html
   const button = wrapper.find('button')
   const input = wrapper.find('input')
+  const user = 'wilcorrea'
 
   // simulate a click and verify the effect
   it('button click emmit the event "searchUser"', () => {
