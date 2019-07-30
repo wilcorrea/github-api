@@ -1,28 +1,39 @@
 import { shallowMount } from '@vue/test-utils'
-import GithubCard from 'src/components/Github-card/Github-card.vue'
+// noinspection NpmUsedModulesInstalled
+import GithubCard from 'src/components/Github-search/Github-search.vue'
 
-describe('Test Github Card', function () {
-  const user = {
-    login: 'wilcorrea',
-    avatar_url: undefined,
-    html_url: undefined,
-    company: undefined,
-    location: undefined,
-    public_repos: undefined,
-    repos_url: undefined,
-    followers: undefined,
-    following_url: undefined,
-    following: undefined
-  }
-  const wrapper = shallowMount(GithubCard, { propsData: { user } })
+describe('Test Github Search', function () {
+  const wrapper = shallowMount(GithubCard)
 
-  // match html rendered
-  it('renders the correct markup', () => {
-    expect(wrapper.html()).toContain(user.login)
+  // it's also easy to check for the existence of elements
+  it('has basic elements', () => {
+    expect(wrapper.contains('input')).toBe(true)
+    expect(wrapper.contains('button')).toBe(true)
   })
 
-  // create and compare snapshots
-  it('should render content correctly', () => {
-    expect(wrapper.html()).toMatchSnapshot()
+  const user = 'wilcorrea'
+
+  // https://vue-test-utils.vuejs.org/api/wrapper/trigger.html
+  const button = wrapper.find('button')
+  const input = wrapper.find('input')
+
+  // simulate a click and verify the effect
+  it('button click emmit the event "searchUser"', () => {
+    // trigger a search
+    button.trigger('click')
+    // console.log('[debug]', wrapper.emitted())
+    expect(wrapper.emitted().searchUser).toEqual([['']])
+  })
+
+  // simulate a click and verify the effect
+  it('emmit a search by an user', () => {
+    // input.element.value = value
+    // input.trigger('input')
+    input.setValue(user)
+    expect(wrapper.vm.search).toEqual(user)
+
+    // trigger new search
+    button.trigger('click')
+    expect(wrapper.emitted().searchUser).toEqual([[''], [user]])
   })
 })
