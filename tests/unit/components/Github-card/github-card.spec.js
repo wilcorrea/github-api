@@ -3,7 +3,8 @@ import { shallowMount } from '@vue/test-utils'
 import GithubCard from 'src/components/Github-card/Github-card.vue'
 
 describe('Test Github Card', function () {
-  describe('invalid user', function () {
+  // use invalid user
+  describe('use invalid user', function () {
     const wrapper = shallowMount(GithubCard)
 
     // validate available
@@ -17,7 +18,8 @@ describe('Test Github Card', function () {
     })
   })
 
-  describe('invalid user', function () {
+  // use valid user
+  describe('use valid user', function () {
     const user = {
       login: 'wilcorrea',
       avatar_url: undefined,
@@ -47,5 +49,4 @@ describe('Test Github Card', function () {
       expect(wrapper.html()).toMatchSnapshot()
     })
   })
-
 })

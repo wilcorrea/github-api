@@ -88,8 +88,7 @@
     "coveragePathIgnorePatterns": [
       "src/App.vue",
       "src/main.js",
-      "/node_modules/",
-      "src/vendor/"
+      "/node_modules/"
     ],
     "testMatch": [
       "**/tests/unit/**/*.spec.(js)|**/__tests__/*.(js)"

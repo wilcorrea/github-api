@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Github should render content correctly 1`] = `"<div class=\\"container\\"><h1>Welcome to github playground api :)</h1> <githubsearch-stub></githubsearch-stub> <githubcard-stub user=\\"[object Object]\\"></githubcard-stub> <h3>User not found</h3></div>"`;

@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
 // noinspection NpmUsedModulesInstalled
-import GithubCard from 'src/components/Github-search/Github-search.vue'
+import GithubSearch from 'src/components/Github-search/Github-search.vue'
 
 describe('Test Github Search', function () {
-  const wrapper = shallowMount(GithubCard)
+  const wrapper = shallowMount(GithubSearch)
 
   // it's also easy to check for the existence of elements
   it('has basic elements', () => {

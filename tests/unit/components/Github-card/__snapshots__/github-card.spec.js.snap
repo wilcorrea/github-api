@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test Github Card invalid user should render content correctly 1`] = `undefined`;
+exports[`Test Github Card use invalid user should render content correctly 1`] = `undefined`;
 
-exports[`Test Github Card invalid user should render content correctly 2`] = `
+exports[`Test Github Card use valid user should render content correctly 1`] = `
 "<div class=\\"github-card\\"><div class=\\"github-avatar\\"><img alt=\\"\\"></div> <div class=\\"github-information\\"><span class=\\"name\\"><a>
         wilcorrea
       </a></span> <span class=\\"company\\">

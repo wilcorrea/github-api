@@ -2,10 +2,12 @@
   <div class="container">
     <h1>{{ title }}</h1>
     <GithubSearch
-      @searchUser="searchUser"/>
+      @searchUser="searchUser"
+    />
     <GithubCard
-      :user="user"/>
-      <h3>{{ error }}</h3>
+      :user="user"
+    />
+    <h3>{{ error }}</h3>
   </div>
 </template>
 
@@ -16,6 +18,9 @@ import GithubCard from '../Github-card/Github-card';
 
 export default {
   name: 'Github',
+  messages: {
+    error: 'User not found',
+  },
   data() {
     return {
       user: {},
@@ -24,17 +29,19 @@ export default {
     };
   },
   methods: {
-    async searchUser(search) {
+    searchUser(search) {
       this.cleanErrorMessages();
-      axios
+      return axios
         .get(`https://api.github.com/users/${search}`)
-        .then((res) => {
-          this.user = { ...res.data };
-        })
-        .catch(() => {
-          this.user = {};
-          this.error = 'User not found';
-        });
+        .then(this.onSuccess)
+        .catch(this.onError);
+    },
+    onSuccess(response) {
+      this.user = { ...response.data };
+    },
+    onError() {
+      this.user = {};
+      this.error = this.$options.messages.error;
     },
     cleanErrorMessages() {
       this.error = '';
