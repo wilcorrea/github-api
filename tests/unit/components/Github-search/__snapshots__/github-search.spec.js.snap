@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Github Card should render content correctly 1`] = `
+"<div class=\\"github-card\\"><div class=\\"github-avatar\\"><img alt=\\"\\"></div> <div class=\\"github-information\\"><span class=\\"name\\"><a>
+        wilcorrea
+      </a></span> <span class=\\"company\\">
+      
+    </span> <span>
+      
+    </span> <hr> <span>
+      
+      <a>Repositories</a></span> <span>
+      
+      <a>Followers</a></span> <span>
+      
+      <a>
+        Following
+      </a></span></div></div>"
+`;

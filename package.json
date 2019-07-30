@@ -7,8 +7,10 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "unit": "jest --config test/unit/jest.conf.js --coverage",
-    "test": "jest",
+    "unit": "jest",
+    "unit-update-snapshopts": "jest --updateSnapshot",
+    "unit-coverage": "jest --coverage",
+    "test": "yarn unit",
     "lint": "eslint --ext .js,.vue src test/unit",
     "build": "node build/build.js"
   },
@@ -84,6 +86,19 @@
       "**/tests/unit/**/*.spec.(js)|**/__tests__/*.(js)"
     ],
     "verbose": true,
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      ".*\\.(vue)$": "vue-jest"
+    },
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1",
+      "^src/(.*)$": "<rootDir>/src/$1"
+    },
     "testURL": "http://localhost"
   }
 }
