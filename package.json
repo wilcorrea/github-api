@@ -8,11 +8,12 @@
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
-    "test": "npm run unit",
+    "test": "jest",
     "lint": "eslint --ext .js,.vue src test/unit",
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@vue/test-utils": "^1.0.0-beta.29",
     "axios": "0.18.1",
     "vue": "^2.5.2"
   },
@@ -76,5 +77,12 @@
     "last 2 versions",
     "not ie <= 8"
   ],
-  "keywords": []
+  "keywords": [],
+  "jest": {
+    "testMatch": [
+      "**/tests/unit/**/*.spec.(js)|**/__tests__/*.(js)"
+    ],
+    "verbose": true,
+    "testURL": "http://localhost"
+  }
 }
