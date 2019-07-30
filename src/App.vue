@@ -5,18 +5,18 @@
 </template>
 
 <script>
-import Github from "./components/Github/Github";
+import Github from './components/Github/Github';
 
 export default {
-  name: "App",
-  data(){
+  name: 'App',
+  data() {
     return {
-      button: false
-    }
+      button: false,
+    };
   },
   components: {
-    Github
-  }
+    Github,
+  },
 };
 </script>
 

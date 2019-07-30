@@ -7,16 +7,16 @@
       @click="$emit('searchUser', search)">
       Send
     </button>
-  </div>  
+  </div>
 </template>
 <script>
 export default {
-  name: "GithubSearch",
+  name: 'GithubSearch',
   data() {
     return {
-      search: ""
+      search: '',
     };
-  }
+  },
 };
 </script>
 <style scoped>

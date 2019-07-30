@@ -2,48 +2,48 @@
   <div class="container">
     <h1>{{ title }}</h1>
     <GithubSearch
-      @searchUser="searchUser"/>    
-    <GithubCard 
+      @searchUser="searchUser"/>
+    <GithubCard
       :user="user"/>
       <h3>{{ error }}</h3>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-import GithubSearch from "../Github-search/Github-search.vue";
-import GithubCard from "../Github-card/Github-card.vue";
+import axios from 'axios';
+import GithubSearch from '../Github-search/Github-search';
+import GithubCard from '../Github-card/Github-card';
 
 export default {
-  name: "Github",
+  name: 'Github',
   data() {
     return {
       user: {},
-      error: "",
-      title: "Welcome to github playground api :)"
+      error: '',
+      title: 'Welcome to github playground api :)',
     };
   },
   methods: {
-    searchUser: async function(search) {
+    async searchUser(search) {
       this.cleanErrorMessages();
       axios
-        .get("https://api.github.com/users/" + search)
-        .then(res => {
+        .get(`https://api.github.com/users/${search}`)
+        .then((res) => {
           this.user = { ...res.data };
         })
         .catch(() => {
           this.user = {};
-          this.error = "User not found";
+          this.error = 'User not found';
         });
     },
-    cleanErrorMessages: function() {
-      this.error = "";
-    }
+    cleanErrorMessages() {
+      this.error = '';
+    },
   },
   components: {
     GithubSearch,
-    GithubCard
-  }
+    GithubCard,
+  },
 };
 </script>
 

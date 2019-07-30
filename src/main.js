@@ -1,10 +1,11 @@
-import Vue from "vue";
-import App from "./App";
+import Vue from 'vue';
+import App from './App';
 
 Vue.config.productionTip = false;
 
+// eslint-disable-next-line no-new
 new Vue({
-  el: "#app",
+  el: '#app',
   components: { App },
-  template: "<App/>"
+  template: '<App/>',
 });

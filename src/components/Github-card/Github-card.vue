@@ -2,7 +2,7 @@
   <div class="github-card"
     v-if="user.login">
     <div class="github-avatar">
-      <img 
+      <img
         v-bind:src="user.avatar_url">
     </div>
     <div class="github-information">
@@ -20,17 +20,17 @@
       <hr/>
       <span>
          {{ user.public_repos }}
-        <a 
+        <a
           :href="user.repos_url">Repositories</a>
       </span>
       <span>
         {{ user.followers }}
-        <a 
+        <a
           :href="user.following_url">Followers</a>
       </span>
       <span>
         {{ user.following }}
-        <a 
+        <a
           :href="user.following_url">Following</a>
       </span>
     </div>
@@ -38,8 +38,8 @@
 </template>
 <script>
 export default {
-  name: "GithubCard",
-  props: ["user"]
+  name: 'GithubCard',
+  props: ['user'],
 };
 </script>
 <style scoped>
