@@ -61,7 +61,7 @@ export default {
      * @returns {boolean}
      */
     available() {
-      return this.user && this.user.login;
+      return !!(this.user && this.user.login);
     },
   },
 };

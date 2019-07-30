@@ -10,3 +10,8 @@ test-update-snapshopts:
 # ex.: make test-dev FILE="tests/unit/demo/counter.spec.js"
 test-dev:
 	docker exec -it github-api yarn unit-update-snapshopts ${FILE}
+
+## update the snapshopts
+# ex.: make test-dev FILE="tests/unit/demo/counter.spec.js"
+test-coverage:
+	docker exec -it github-api yarn unit-coverage

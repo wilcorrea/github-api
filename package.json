@@ -9,7 +9,7 @@
     "start": "npm run dev",
     "unit": "jest",
     "unit-update-snapshopts": "jest --updateSnapshot",
-    "unit-coverage": "jest --coverage",
+    "unit-coverage": "jest --updateSnapshot --coverage",
     "test": "yarn unit",
     "lint": "eslint --ext .js,.vue src test/unit",
     "build": "node build/build.js"
@@ -82,6 +82,15 @@
   ],
   "keywords": [],
   "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,ts,vue}"
+    ],
+    "coveragePathIgnorePatterns": [
+      "src/App.vue",
+      "src/main.js",
+      "/node_modules/",
+      "src/vendor/"
+    ],
     "testMatch": [
       "**/tests/unit/**/*.spec.(js)|**/__tests__/*.(js)"
     ],

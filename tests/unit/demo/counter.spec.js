@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils'
+// noinspection NpmUsedModulesInstalled
 import Counter from 'src/demo/Counter.vue'
 
 // it is an alias to test
@@ -24,6 +25,13 @@ describe('Counter', () => {
     const button = wrapper.find('button')
     button.trigger('click')
     expect(wrapper.vm.counter).toBe(1)
+  })
+
+  // simulate a click and verify the effect
+  it('button click should increment the count', () => {
+    const counter = wrapper.vm.counter
+    wrapper.vm.increment()
+    expect(wrapper.vm.counter).toBe(counter + 1)
   })
 
   // create and compare snapshots
