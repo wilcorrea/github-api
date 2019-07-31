@@ -20,7 +20,8 @@ export default {
     Github,
   },
   created() {
-    $container.set('github', user => axios.get(`https://api.github.com/users/${user}`));
+    const searchUser = user => axios.get(`https://api.github.com/users/${user}`);
+    $container.set('github', searchUser);
   },
 };
 </script>
