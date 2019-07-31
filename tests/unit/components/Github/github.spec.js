@@ -1,11 +1,20 @@
 import { shallowMount } from '@vue/test-utils'
 // noinspection NpmUsedModulesInstalled
 import Github from 'src/components/Github/Github.vue'
-import axios from 'axios'
-
-jest.mock('axios')
+// noinspection NpmUsedModulesInstalled
+import $container from 'src/container';
 
 describe('Test Github', function () {
+  const login = 'wilcorrea'
+  const response = { data: { login } }
+  $container.set('github', user => new Promise((resolve, reject) => {
+    if (user) {
+      resolve(response)
+      return
+    }
+    reject()
+  }));
+
   const wrapper = shallowMount(Github)
 
   // it is valid??
@@ -22,19 +31,29 @@ describe('Test Github', function () {
     expect(wrapper.vm.error).toBe('')
   })
 
+  // test onSuccess
+  it('test onSuccess', () => {
+    wrapper.vm.user = {}
+    wrapper.vm.onSuccess(response)
+    expect(wrapper.vm.user.login).toBe(login)
+  })
+
+  // test onError
+  it('test onError', () => {
+    wrapper.vm.error = ''
+    wrapper.vm.onError()
+    expect(wrapper.vm.error).toBe(wrapper.vm.$options.messages.error)
+  })
+
   // search a valid user
   it('search a valid user', async () => {
-    const login = 'wilcorrea'
-    const response = { data: { login } }
-    axios.get.mockResolvedValue(response)
     await wrapper.vm.searchUser(login)
     expect(wrapper.vm.user.login).toBe(login)
   })
 
   // search a invalid user
   it('search a invalid user', async () => {
-    wrapper.vm.error = ''
-    await wrapper.vm.onError()
+    await wrapper.vm.searchUser(undefined)
     expect(wrapper.vm.error).toBe(wrapper.vm.$options.messages.error)
   })
 

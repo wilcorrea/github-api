@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import $container from '../../container';
 import GithubSearch from '../Github-search/Github-search';
 import GithubCard from '../Github-card/Github-card';
 
@@ -29,20 +29,31 @@ export default {
     };
   },
   methods: {
-    searchUser(search) {
+    /**
+     * @param {string} user
+     * @returns {Promise}
+     */
+    searchUser(user) {
       this.cleanErrorMessages();
-      return axios
-        .get(`https://api.github.com/users/${search}`)
+      const service = $container.get('github');
+      return service(user)
         .then(this.onSuccess)
         .catch(this.onError);
     },
+    /**
+     * @param {Object} response
+     */
     onSuccess(response) {
       this.user = { ...response.data };
     },
+    /**
+     */
     onError() {
       this.user = {};
       this.error = this.$options.messages.error;
     },
+    /**
+     */
     cleanErrorMessages() {
       this.error = '';
     },

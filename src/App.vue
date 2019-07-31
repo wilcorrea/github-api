@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+import $container from './container';
 import Github from './components/Github/Github';
 
 export default {
@@ -16,6 +18,9 @@ export default {
   },
   components: {
     Github,
+  },
+  created() {
+    $container.set('github', user => axios.get(`https://api.github.com/users/${user}`));
   },
 };
 </script>
